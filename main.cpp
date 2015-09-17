@@ -66,9 +66,9 @@ string registersName[MAX]={"$0","$at","$v0","$v1","$a0","$a1","$a2","$a3",
  						   "$t9","$k0","$k1","$gp","$sp","$fp","$ra"};
 
 //Vetor que contem o nome das instrucoes
-string instructionsName[MAX]={"add","sub","addu","mult","multu","subu","div","divu","jr","slt", //só do tipo R
-                              "addi","subi","beq","bnq","slti","sltiu","lw","sw",               //só do tipo I
-                              "j","jal"};                                                       //só do tipo J
+string instructionsName[MAX]={"add","sub","addu","mult","multu","subu","div","divu","jr","slt", //sÃ³ do tipo R
+                              "addi","subi","beq","bnq","slti","sltiu","lw","sw",               //sÃ³ do tipo I
+                              "j","jal"};                                                       //sÃ³ do tipo J
 
 //Vetor que contem as instrucoes que podem ser realizadas
 rformat instructionsR[10];
@@ -184,7 +184,7 @@ void bne(int rs,int rt,int immediate){
 		advance_pc(4);
 }
 
-//Metodo da função jr
+//Metodo da funÃ§Ã£o jr
 void jr(int rd, int rs, int rt){
     pc = registers[rd] * 4;
 }
@@ -231,9 +231,9 @@ void transformaBinJ(jformat instructions){
 //Metodo para executar a instrucao desejada
 void execute(int i,int j,int k,int l){
 
-    //Instrução JR
-    rformat ijr;
-    ijr.opcode = 0;
+    	//InstruÃ§Ã£o JR
+    	rformat ijr;
+    	ijr.opcode = 0;
 	ijr.rs = j;
 	ijr.rd = 0;
 	ijr.rt = 0;
@@ -243,7 +243,7 @@ void execute(int i,int j,int k,int l){
 	instructionsR[8]=ijr;
 
 
-    // Instrucao bne
+    	// Instrucao bne
 	iformat ibne;
 	ibne.opcode = 5;
 	ibne.rt = k;
@@ -261,7 +261,7 @@ void execute(int i,int j,int k,int l){
 	ibeq.f = &beq;
 	instructionsI[2]=ibeq;
 
-	//Instrução addi
+	//InstruÃ§Ã£o addi
 	iformat iaddi;
 	iaddi.opcode = 16;
 	iaddi.rs = j;
@@ -292,7 +292,7 @@ void execute(int i,int j,int k,int l){
 	isub.f = &sub;
 	instructionsR[1]=isub;
 
-    //Instrução LW
+    	//InstruÃ§Ã£o LW
 	iformat ilw;
 	ilw.opcode = 35;
 	ilw.rs = j;
@@ -301,7 +301,7 @@ void execute(int i,int j,int k,int l){
 	ilw.f = &lw;
 	instructionsI[6]=ilw;
 
-	//Instrução SW
+	//InstruÃ§Ã£o SW
 	iformat isw;
 	isw.opcode = 43;
 	isw.rs = j;
@@ -386,12 +386,12 @@ int main(int argc, char const *argv[])
 		registers[w]=0;
 	}
 
-	//Inicia memória com x
+	//Inicia memÃ³ria com x
 	for (int w=0;w<4096;w++){
 		memory[w]="x";
 	}
 
-    //Mudando valor da memória e de alguns registrador para testar utilizando o teste.txt
+    //Mudando valor da memÃ³ria e de alguns registrador para testar utilizando o teste.txt
     memory[58]="12";
     registers[21]=50;
 	registers[10]=8;
@@ -413,7 +413,7 @@ int main(int argc, char const *argv[])
   	myfile.close();
 
   	while (memory[pc/4]!="x"){
-  		cout << "\n\nInstrucao: ";	     	 // Impressao
+  		cout << "\n\nInstrucao: ";   // Impressao
     	cout << memory[pc/4] << endl;        // Impressao
     	inst = memory[pc/4];
 		inst2 = quebra(&inst," ");
