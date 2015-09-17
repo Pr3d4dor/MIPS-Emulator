@@ -1,0 +1,5 @@
+add $s0,$s0,$s2
+add $s3,$s3,$s4
+beq $s3,$s6,4
+j 0
+add $s0,$s0,$0
