@@ -242,7 +242,6 @@ void execute(int i,int j,int k,int l){
 	ijr.f = &jr;
 	instructionsR[8]=ijr;
 
-
     	// Instrucao bne
 	iformat ibne;
 	ibne.opcode = 5;
